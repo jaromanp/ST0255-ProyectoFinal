@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+#url Producto:crear_producto
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('productos/', include(('apps.Producto.urls','Producto')))
 ]
