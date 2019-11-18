@@ -7,6 +7,9 @@ class Product(models.Model):
     categoria = models.CharField(max_length = 50, blank = False, null = False, default = "default")
     precio = models.IntegerField(default = 0)
 
+    def __str__(self):
+        return self.nombreP
+
 class Usuario(models.Model):
     id_usuario = models.AutoField(primary_key = True) 
     nombreUser = models.CharField(max_length = 20, blank = False, null = False)
@@ -15,12 +18,18 @@ class Usuario(models.Model):
     direccion = models.CharField(max_length = 50, blank = False, null = False)
     email = models.EmailField()
 
+    def __str__(self):
+        return self.id_usuario
+
 
 class Comentario(models.Model):
     id_comentario = models.AutoField(primary_key = True)
     id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     comentario = models.TextField(max_length = 150)
     pub_date = models.DateField()
+
+    def __str__(self):
+        return self.id_comentario
 
 
 
