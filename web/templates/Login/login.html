@@ -76,10 +76,12 @@
 							<header>
 								<h2>Log In</h2>	
 							</header>
-							<form method="post" action="#" class="cta">
+							<form method="post">
+								{% csrf_token %}
 								<div class="row gtr-uniform gtr-50">
-									<div class="col-12 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Your Email Address" /></div>
-									<div class="col-12 col-12-xsmall"><input type="password" name="password" id="email" placeholder="Your password" /></div>
+									<div class="col-12 col-12-xsmall"><input type="text" placeholder="Nombre de usuario" /></div>
+									<div class="col-12 col-12-xsmall"><input type="password" name="password" id="email" placeholder="Contraseña" /></div>
+									{{ form.errors}}
 									<div class="col-12 col-12-xsmall"><input type="submit" value="Get Started" class="fit primary" /></div>
 								</div>
 							</form>
