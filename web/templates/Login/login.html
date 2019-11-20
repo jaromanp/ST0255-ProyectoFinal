@@ -74,15 +74,15 @@
 				<section id="seven" class="wrapper style2 special fade">
 						<div class="container">
 							<header>
-								<h2>Log In</h2>	
+								<h2>Iniciar Sesión</h2>	
 							</header>
 							<form method="post">
 								{% csrf_token %}
 								<div class="row gtr-uniform gtr-50">
-									<div class="col-12 col-12-xsmall"><input type="text" placeholder="Nombre de usuario" /></div>
+									<div class="col-12 col-12-xsmall"><input type="text" placeholder="Nombre de usuario" name="username" /></div>
 									<div class="col-12 col-12-xsmall"><input type="password" name="password" id="email" placeholder="Contraseña" /></div>
 									{{ form.errors}}
-									<div class="col-12 col-12-xsmall"><input type="submit" value="Get Started" class="fit primary" /></div>
+									<div class="col-12 col-12-xsmall"><input type="submit" value="Iniciar Sesión" class="fit primary" /></div>
 								</div>
 							</form>
 						</div>
