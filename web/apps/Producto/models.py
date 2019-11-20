@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Product(models.Model):
@@ -8,23 +9,22 @@ class Product(models.Model):
     precio = models.IntegerField(default = 0)
 
     def __str__(self):
-        return self.nombreP
+        return self.id_product
 
-class Usuario(models.Model):
-    id_usuario = models.AutoField(primary_key = True) 
-    nombreUser = models.CharField(max_length = 20, blank = False, null = False)
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     edad = models.IntegerField(null = False)
     ciudad = models.CharField(max_length = 30, blank = False, null = False)
     direccion = models.CharField(max_length = 50, blank = False, null = False)
-    email = models.EmailField()
+    
 
     def __str__(self):
-        return self.id_usuario
+        return self.user.username
 
 
 class Comentario(models.Model):
     id_comentario = models.AutoField(primary_key = True)
-    id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    id_usuario = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     comentario = models.TextField(max_length = 150)
     pub_date = models.DateField()
 
