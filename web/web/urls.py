@@ -13,10 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib import admin
 from django.urls import path, include
 from apps.Producto.views import Inicio
+
 
 #url Producto:crear_producto
 
@@ -25,5 +26,7 @@ urlpatterns = [
     path('', include(('apps.Producto.urls', 'index'))),
     path('login/', LoginView.as_view(template_name='Login/login.html'), name='login'),
     path('register/', include(('apps.Producto.urls', 'register'))),
-    path('inicio/', Inicio.as_view(), name = 'index')
+    path('inicio/', Inicio.as_view(), name = 'index'),
+    #path('logout/', LogoutView.as_view(template_name='Login/login.html'), name='login'),
+
 ]

@@ -79,8 +79,11 @@
 							<section>
 								<h3>Llenar los siguientes datos</h3>
 								<form method="post" action="#">
+										{% csrf_token %}
 									<div class="row gtr-uniform gtr-50">
+											
 										<div class="col-6 col-12-xsmall">
+												
 											<input type="text" name="name" id="name" value="" placeholder="Nombre" />
 										</div>
 										<div class="col-6 col-12-xsmall">
@@ -91,6 +94,9 @@
 										</div>
 										<div class="col-6 col-12-xsmall">
 												<input type="text" name="direccion" id="direccion" value="" placeholder="Dirección" />
+										</div>
+										<div class="col-6 col-12-xsmall">
+												<input type="text" name="username" id="username" value="" placeholder="Nombre de usuario" />
 										</div>
 										<div class="col-12 col-12-xsmall">
 												<input type="email" name="email" id="email" value="" placeholder="Email" />
