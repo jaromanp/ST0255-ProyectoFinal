@@ -1,12 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.generic.edit import FormView
-from django.contrib.auth import login,logout
+from django.contrib.auth import login,logout, authenticate
 from django.http import HttpResponseRedirect
-from .forms import FormularioLogin
+from ..libro.views import Inicio
+from .forms import FormularioLogin, CustomUserCreationForm
+
+
 
 class Login(FormView):
     template_name = 'login.html'
@@ -28,3 +31,22 @@ class Login(FormView):
 def logoutUsuario(request):
     logout(request)
     return HttpResponseRedirect('/accounts/login/')
+
+
+def registro_usuario(request):
+    data = {
+        'form':CustomUserCreationForm()
+    }
+
+    if request.method == 'POST':
+        formulario = CustomUserCreationForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            #autenticar al usuario y redirigir al inicio
+            username = formulario.cleaned_data['username']
+            password = formulario.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request,user)
+            return render(request, 'index.html')
+            
+    return render(request, 'register.html', data)
