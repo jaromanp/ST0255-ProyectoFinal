@@ -22,7 +22,7 @@ class AutorForm(forms.ModelForm):
             'categoria': forms.TextInput(
                 attrs = {
                     'class':'form-control',
-                    'placeholder':'Ingrese los apellidos del autor',
+                    'placeholder':'Ingrese la categoria del instrumento',
                     'id':'categoria'
                 }
             ),
@@ -32,37 +32,41 @@ class AutorForm(forms.ModelForm):
                     'placeholder':'Ingrese el precio del producto',
                     'id':'precio'
                 }
-            ),
-            'descripcion': forms.Textarea(
-                attrs = {
-                    'class':'form-control',
-                    'placeholder': 'Ingrese una pequeña descripcion del producto',
-                    'id':'descripcion'
-                }
             )
+            
         }
 
 class LibroForm(forms.ModelForm):
     class Meta:
         model = Comentario
-        fields = ('comentario','producto_id','fecha_de_compra')
+        fields = ('titulo','comentario','producto_id','fecha_de_compra')
         label = {
-            'comentario':'Título del libro',
-            'producto_id': 'Autor(es) del Libro',
-            'fecha_de_compra': 'Fecha de Publciación del Libro'
+            'Titulo':'titulo',
+            'comentario':'comentario',
+            'producto_id': 'productos relacionados al comentario',
+            'fecha_de_compra': 'Fecha en la que compro el producto'
         }
         widgets = {
-            'comentario': forms.TextInput(
+            'titulo':forms.TextInput(
                 attrs = {
-                    'class': 'form-control',
-                    'placeholder': 'Ingrese título de libro'
+                    'class':'form-control',
+                    'placeholder':'Ingrese el titulo de comentario max 30 caracteres',
+                    'id':'titulo'
+                }
+            ),
+            'comentario': forms.Textarea(
+                attrs = {
+                    'class':'form-control',
+                    'placeholder': 'Ingrese su comentario',
+                    'id':'descripcion'
                 }
             ),
             'producto_id': forms.SelectMultiple(
                 attrs = {
                     'class':'form-control'
                 }
-            ),
+            )
+            ,
             'fecha_de_compra': forms.SelectDateWidget(
                 attrs = {
                     'class': 'form-control'

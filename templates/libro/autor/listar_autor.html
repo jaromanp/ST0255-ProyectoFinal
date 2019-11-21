@@ -9,7 +9,7 @@
   {% if autores %}
       <div class="card">
           <div class="card-header">
-              <strong class="card-title">Listado de Autores</strong>
+              <strong class="card-title">Listado de Productos</strong>
           </div>
           <div class="table-stats order-table ov-h">
               <table class="table">
@@ -19,7 +19,6 @@
                         <th>Nombre</th>
                         <th>Categoria</th>
                         <th>Precio</th>
-                        <th>Descripcion</th>
                         <th>Opciones</th>
                       </tr>
                   </thead>
@@ -30,7 +29,6 @@
                         <td>{{ autor.nombre }}</td>
                         <td>{{ autor.categoria }}</td>
                         <td>{{ autor.precio }}</td>
-                        <td>{{ autor.descripcion }}</td>
                         <td>
                           <a href="{% url 'libro:editar_autor' autor.id %}" class="btn btn-primary">Editar</a>
                           <a href="{% url 'libro:eliminar_autor' autor.id %}" class="btn btn-danger">Eliminar</a>

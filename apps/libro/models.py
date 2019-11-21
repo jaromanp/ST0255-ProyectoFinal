@@ -21,6 +21,7 @@ class Producto(models.Model):
 
 class Comentario(models.Model):
     id = models.AutoField(primary_key = True)
+    titulo = models.CharField('titulo', max_length = 30, blank = False, null = False, default = 'comentario')
     comentario = models.CharField('comentario', max_length = 255, blank = False, null = False)
     fecha_de_compra = models.DateField('Fecha de publicación', blank = False, null = False)
     producto_id = models.ManyToManyField(Producto)
