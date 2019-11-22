@@ -17,8 +17,9 @@
                       <tr>
                         <th>ID</th>
                         <th>comentario</th>
-                        <th>Fecha de Compra</th>
+                        <th>Productos</th>
                         <th>Fecha de Publicación</th>
+                        <th>Fecha de Compra</th>
                         <th>Opciones</th>
                       </tr>
                   </thead>
@@ -27,6 +28,11 @@
                       <tr>
                         <td>{{ libro.id }}</td>
                         <td>{{ libro.titulo}}</td>
+                        <td>
+                          {% for autor in libro.autor_id.all %}
+                              <li>{{ autor.nombre }}</li>
+                          {% endfor %}
+                        </td>
                         <td>{{ libro.fecha_de_compra }}</td>
                         <td>{{ libro.fecha_creacion }}</td>
                         <td>

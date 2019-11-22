@@ -39,7 +39,7 @@ class AutorForm(forms.ModelForm):
 class LibroForm(forms.ModelForm):
     class Meta:
         model = Comentario
-        fields = ('titulo','comentario','producto_id','fecha_de_compra')
+        fields = ('titulo','comentario','producto_id', 'fecha_de_compra')
         label = {
             'Titulo':'titulo',
             'comentario':'comentario',
@@ -65,11 +65,11 @@ class LibroForm(forms.ModelForm):
                 attrs = {
                     'class':'form-control'
                 }
-            )
-            ,
+            ),
             'fecha_de_compra': forms.SelectDateWidget(
                 attrs = {
                     'class': 'form-control'
                 }
             )
+            
         }
