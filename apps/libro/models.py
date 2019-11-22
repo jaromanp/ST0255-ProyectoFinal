@@ -8,7 +8,7 @@ class Producto(models.Model):
     precio = models.IntegerField(default = 0)
     descripcion = models.TextField(blank = False,null = False)
     estado = models.BooleanField('Estado', default = True)
-    fecha_creacion = models.DateField('Fecha de creación', auto_now = True, auto_now_add = False)
+    fecha_creacion = models.DateField('Fecha de compra', auto_now = True, auto_now_add = False)
 
     class Meta:
         verbose_name = 'Producto'
@@ -23,9 +23,9 @@ class Comentario(models.Model):
     id = models.AutoField(primary_key = True)
     titulo = models.CharField('titulo', max_length = 30, blank = False, null = False, default = '')
     comentario = models.CharField('comentario', max_length = 255, blank = False, null = False)
-    fecha_de_compra = models.DateField('Fecha de publicación', blank = False, null = False)
+    fecha_de_compra = models.DateField('Fecha de publicacion', blank = False, null = False)
     producto_id = models.ManyToManyField(Producto)
-    fecha_creacion = models.DateField('Fecha de creación', auto_now = True, auto_now_add = False)
+    fecha_creacion = models.DateField('Fecha de creacion', auto_now = True, auto_now_add = False)
     estado = models.BooleanField(default = True, verbose_name = 'Estado')
 
     class Meta:
